@@ -12,13 +12,10 @@ class TimerError(Exception):
 class ActionTimer(snips_common.ActionWrapper):
     reactions = {TimerError: "Désolée, je n'ai pas compris."}
 
-    def __init__(self, hermes, intent_message):
-        self.hermes = hermes
-        self.intent_message = intent_message
-
     def action(self):
-        duration = self.intent_message.Duration.first()
-        reason = self.intent_message.Reason.first().value
+        slots = self.intent_message.slots
+        duration = slots.Duration.first()
+        reason = slots.Reason.first().value if len(slots.Reason) else None
 
         try:
             duration_as_sentence = snips_common.french_duration(duration)
