@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import threading
-import time
 
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import MqttOptions
