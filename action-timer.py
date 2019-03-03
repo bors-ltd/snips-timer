@@ -36,4 +36,4 @@ if __name__ == "__main__":
     mqtt_opts = MqttOptions()
 
     with Hermes(mqtt_options=mqtt_opts) as hermes:
-        hermes.subscribe_intent("borsltd:Minuteur", ActionTimer.callback).start()
+        hermes.subscribe_intent("borsltd:MinuteurContextuel", ActionTimer.callback).start()
