@@ -17,10 +17,9 @@ class ActionTimer(snips_common.ActionWrapper):
         duration = slots.Duration.first()
         reason = slots.Reason.first().value if len(slots.Reason) else None
 
-        try:
-            duration_as_sentence = snips_common.french_duration(duration)
-        except Exception as exc:
-            raise TimerError from exc
+        duration_as_sentence = snips_common.french_duration(duration)
+        if not duration_as_sentence:
+            raise TimerError
 
         if reason:
             message = "D'accord, je vous rappelle dans %s de %s" % (
