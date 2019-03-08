@@ -31,7 +31,9 @@ DURATIONS = [
 REASONS = [
     "arrêter l'infusion",
     "boire mon thé",
+    "boire le thé",
     "préchauffer le four",
+    "étaler le pain",
     "mettre le pain au four",
     "sortir le pain du four",
     "téléphoner",
@@ -114,12 +116,13 @@ def elision(sentence):
 
 def generate_timer(fp):
     for sentence in TIMERS_ONLY:
-        for duration in DURATIONS:
-            fp.write(sentence.format(duration=duration) + "\n")
+        # Pick a single duration, assume this built-in slot is already well trained
+        duration = random.choice(DURATIONS)
+        fp.write(sentence.format(duration=duration) + "\n")
 
     for sentence in TIMERS_AND_REASONS:
         for reason in REASONS:
-            # This time just pick a single duration, this built-in slot is already well trained
+            # Pick a single duration, assume this built-in slot is already well trained
             duration = random.choice(DURATIONS)
             fp.write(elision(sentence.format(duration=duration, reason=reason)) + "\n")
 
@@ -128,8 +131,9 @@ def generate_remaining_time(fp):
     for sentence in REMAINING_TIMERS:
         fp.write(sentence + "\n")
     for sentence in REMAINING_DURATIONS:
-        for duration in DURATIONS:
-            fp.write(sentence.format(duration=duration) + "\n")
+        # Pick a single duration, assume this built-in slot is already well trained
+        duration = random.choice(DURATIONS)
+        fp.write(sentence.format(duration=duration) + "\n")
     for sentence in REMAINING_REASONS:
         for reason in REASONS:
             fp.write(elision(sentence.format(reason=reason)) + "\n")
