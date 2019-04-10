@@ -48,6 +48,8 @@ REASONS = [
 
 
 TIMERS_ONLY = [
+    "Lance un minuteur de [{duration}](Duration)",
+    "Lance un taillemeur de [{duration}](Duration)",
     "Mets un minuteur de [{duration}](Duration)",
     "Mets un taillemeur de [{duration}](Duration)",
     "Programme un minuteur de [{duration}](Duration)",
@@ -61,6 +63,7 @@ TIMERS_AND_REASONS = [
     "Rappelle-moi dans [{duration}](Duration) de [{reason}](Reason)",
     "Rappelle-moi de [{reason}](Reason) dans [{duration}](Duration)",
     "Fais-moi penser à [{reason}](Reason) dans [{duration}](Duration)",
+    "Fais-moi penser dans [{duration}](Duration) à [{reason}](Reason)",
     "Je dois [{reason}](Reason) dans [{duration}](Duration)",
     "Dans [{duration}](Duration) je dois [{reason}](Reason)",
 ]
